@@ -20,6 +20,8 @@ import {
   Alert,
   AlertPropsColorOverrides,
   AlertColor,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
@@ -30,13 +32,12 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import DownloadIcon from "@mui/icons-material/Download";
 import CodeIcon from "@mui/icons-material/Code";
+import LanguageIcon from "@mui/icons-material/Language";
+import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 
 // ===== Profile data =====
 const profile = {
   name: "Satyam Arora",
-  role: "Software Developer — Full Stack & Data Analyst",
-  tagline:
-    "I build scalable web apps, KPI Dashboards, and AI‑powered projects with React and Python.",
   location: "Hämeenlinna, Finland",
   email: "arorasatyam1112@gmail.com",
   phone: "+358 466199543",
@@ -75,48 +76,6 @@ const skills = [
   "PowerPoint",
 ];
 
-const projects = [
-  {
-    title: "AI Chatbot — CLI",
-    description:
-      "Python command‑line chatbot integrating OpenAI API for quick local use.",
-    tags: ["Python", "OpenAI API", "CLI"],
-    repo: "https://github.com/brogrammer2000/AI_Research_Agent",
-  },
-  {
-    title: "AI Chatbot — React UI",
-    description:
-      "Web‑based chatbot with responsive UI built in React; integrates OpenAI API for conversations.",
-    tags: ["React", "OpenAI API", "UX"],
-    repo: "https://github.com/brogrammer2000/AI_Research_Bot",
-  },
-  {
-    title: "EDEKAOffers Scraper",
-    description:
-      "Supermarket discount scraper to collect weekly offers and structure data for analysis.",
-    tags: ["Python", "Web Scraping", "Data"],
-    repo: "https://github.com/brogrammer2000/Fetching_Offers_EDEKA",
-  },
-  {
-    title: "WeatherApp",
-    description: "Python script to fetch city weather via AccuWeather API.",
-    tags: ["Python", "API"],
-    repo: "https://github.com/brogrammer2000/WeatherAPI-Py-",
-  },
-  {
-    title: "PDFDownloader",
-    description: "Batch download and save PDFs from URLs with error handling.",
-    tags: ["Python", "Automation"],
-    repo: "https://github.com/brogrammer2000/PDF_Downloader",
-  },
-  {
-    title: "FudHub",
-    description: "Recipe suggestion website (PHP, HTML, CSS).",
-    tags: ["PHP", "HTML", "CSS"],
-    repo: "https://github.com/brogrammer2000/fud-hub_2.0",
-  },
-];
-
 // ===== Theme =====
 const darkTheme = createTheme({
   palette: {
@@ -134,6 +93,35 @@ const darkTheme = createTheme({
 
 // ===== UI =====
 function Header() {
+  const { t, language, setLanguage } = useLanguage();
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const languageButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    // Open the language menu on component mount
+    // Use a small timeout to ensure the DOM is fully rendered
+    const timer = setTimeout(() => {
+      if (languageButtonRef.current) {
+        setAnchorEl(languageButtonRef.current);
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleLanguageMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleLanguageMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleLanguageChange = (lang: "en" | "fi") => {
+    setLanguage(lang);
+    handleLanguageMenuClose();
+  };
+
   return (
     <AppBar
       position="sticky"
@@ -162,22 +150,29 @@ function Header() {
         <Stack
           direction="row"
           spacing={1}
+          alignItems="center"
           sx={{ display: { xs: "none", md: "flex" } }}
         >
           <Button href="#projects" color="inherit">
-            Projects
+            {t("nav.projects")}
           </Button>
           <Button href="#experience" color="inherit">
-            Experience
+            {t("nav.experience")}
+          </Button>
+          <Button href="#education" color="inherit">
+            {t("nav.education")}
+          </Button>
+          <Button href="#volunteering" color="inherit">
+            {t("nav.volunteering")}
           </Button>
           <Button href="#skills" color="inherit">
-            Skills
+            {t("nav.skills")}
           </Button>
           <Button href="#contact" color="inherit">
-            Contact
+            {t("nav.contact")}
           </Button>
           <Button href="#game" color="inherit">
-            Game
+            {t("nav.game")}
           </Button>
           <Button
             href={profile.resumeUrl}
@@ -186,15 +181,43 @@ function Header() {
             variant="contained"
             startIcon={<DownloadIcon />}
           >
-            Resume
+            {t("nav.resume")}
           </Button>
         </Stack>
+        <IconButton
+          ref={languageButtonRef}
+          onClick={handleLanguageMenuOpen}
+          color="inherit"
+          aria-label="Change language"
+          sx={{ ml: 1 }}
+        >
+          <LanguageIcon />
+        </IconButton>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleLanguageMenuClose}
+        >
+          <MenuItem
+            onClick={() => handleLanguageChange("en")}
+            selected={language === "en"}
+          >
+            English
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleLanguageChange("fi")}
+            selected={language === "fi"}
+          >
+            Suomi
+          </MenuItem>
+        </Menu>
       </Toolbar>
     </AppBar>
   );
 }
 
 function Hero() {
+  const { t } = useLanguage();
   return (
     <Box
       id="home"
@@ -216,10 +239,10 @@ function Hero() {
         }}
       >
         <Typography variant="overline" color="text.secondary">
-          {profile.role}
+          {t("profile.role")}
         </Typography>
         <Typography variant="h2" sx={{ mt: 1, lineHeight: 1.1 }}>
-          Hi, I’m {profile.name}.<br />
+          Hi, I'm {profile.name}.<br />
           <Box
             component="span"
             sx={{
@@ -228,13 +251,23 @@ function Hero() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            {profile.tagline}
+            {t("profile.tagline")}
           </Box>
         </Typography>
         <Typography sx={{ mt: 2, maxWidth: 760 }} color="text.secondary">
-          Currently focused on expanding my skillset with doing openAI
-          certifications, building AI-powered projects and learning the use of
-          AI in Python based data science projects.
+          {t("profile.description")}
+        </Typography>
+        <Typography sx={{ mt: 2, maxWidth: 760 }} color="text.secondary">
+          <b>{t("profile.basedIn")}</b>, {t("profile.lookingFor")}
+        </Typography>
+        <Typography sx={{ mt: 2, maxWidth: 760 }} color="text.secondary">
+          <a
+            href="https://hameenlinna.e-lomake.fi/lomakkeet/621/lomake.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("profile.subsidy")}
+          </a>
         </Typography>
         <Stack direction="row" spacing={2} sx={{ mt: 4, flexWrap: "wrap" }}>
           <Button
@@ -243,7 +276,7 @@ function Hero() {
             variant="contained"
             startIcon={<CodeIcon />}
           >
-            View my work
+            {t("profile.viewWork")}
           </Button>
           <Button
             href="#contact"
@@ -251,7 +284,7 @@ function Hero() {
             variant="outlined"
             startIcon={<MailIcon />}
           >
-            Contact me
+            {t("profile.contactMe")}
           </Button>
         </Stack>
         {/* Right: interactive bubble */}
@@ -312,6 +345,27 @@ function Hero() {
 }
 
 function Projects() {
+  const { getTranslation } = useLanguage();
+  const projects = getTranslation("projects.items") || [];
+  const projectTags: { [key: string]: string[] } = {
+    "AI Chatbot — CLI": ["Python", "OpenAI API", "CLI"],
+    "AI Chatbot — React UI": ["React", "OpenAI API", "UX"],
+    "EDEKAOffers Scraper": ["Python", "Web Scraping", "Data"],
+    WeatherApp: ["Python", "API"],
+    PDFDownloader: ["Python", "Automation"],
+    FudHub: ["PHP", "HTML", "CSS"],
+  };
+  const projectRepos: { [key: string]: string } = {
+    "AI Chatbot — CLI": "https://github.com/brogrammer2000/AI_Research_Agent",
+    "AI Chatbot — React UI":
+      "https://github.com/brogrammer2000/AI_Research_Bot",
+    "EDEKAOffers Scraper":
+      "https://github.com/brogrammer2000/Fetching_Offers_EDEKA",
+    WeatherApp: "https://github.com/brogrammer2000/WeatherAPI-Py-",
+    PDFDownloader: "https://github.com/brogrammer2000/PDF_Downloader",
+    FudHub: "https://github.com/brogrammer2000/fud-hub_2.0",
+  };
+
   return (
     <Box
       id="projects"
@@ -327,7 +381,7 @@ function Projects() {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Featured Projects
+          {getTranslation("projects.title")}
         </Typography>
         <Box
           sx={{
@@ -337,7 +391,7 @@ function Projects() {
             justifyContent: "center",
           }}
         >
-          {projects.map((p) => (
+          {projects.map((p: any) => (
             <Box
               key={p.title}
               sx={{ flex: "1 1 300px", maxWidth: 380, minWidth: 280 }}
@@ -348,10 +402,10 @@ function Projects() {
                   title={p.title}
                   action={
                     <Stack direction="row" spacing={1}>
-                      {p.repo && (
+                      {projectRepos[p.title] && (
                         <IconButton
                           component="a"
-                          href={p.repo}
+                          href={projectRepos[p.title]}
                           target={"_blank"}
                           rel="noopener noreferrer"
                           aria-label="GitHub"
@@ -372,8 +426,13 @@ function Projects() {
                     spacing={1}
                     sx={{ mt: 2, flexWrap: "wrap" }}
                   >
-                    {p.tags.map((t) => (
-                      <Chip key={t} label={t} size="small" variant="outlined" />
+                    {(projectTags[p.title] || []).map((tag) => (
+                      <Chip
+                        key={tag}
+                        label={tag}
+                        size="small"
+                        variant="outlined"
+                      />
                     ))}
                   </Stack>
                 </CardContent>
@@ -390,6 +449,9 @@ function Projects() {
 const FORMSPREE_URL = "https://formspree.io/f/xzzkajpn";
 
 function Experience() {
+  const { getTranslation, t } = useLanguage();
+  const experiences = getTranslation("experience.items") || [];
+
   return (
     <Box
       id="experience"
@@ -405,48 +467,10 @@ function Experience() {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Experience
+          {t("experience.title")}
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          {[
-            {
-              title: "Junior Software Engineer — Talenom Oy",
-              dates: "Apr 2022 – Jan 2025",
-              bullets: [
-                "Talenom is a Finnish Fintech company that provides accounting and financial management solutions",
-                "Built customer portal for 10,000+ clients (React, Node.js).",
-                "Developed KYC tool improving onboarding efficiency by 30%.",
-                "Thesis on DIY accounting automation adopted internally.",
-              ],
-            },
-            {
-              title: "Junior Data Scientist — Cyreen",
-              dates: "Jan 2021 – Jul 2022",
-              bullets: [
-                "Cyreen is a German startup that provides digital marketing solutions",
-                "Built Python crawlers for 100+ supermarket sites, boosting insights by 25%.",
-                "Created KPI queries and integrated weather/sports data.",
-                "Worked with PowerBI, Tableau, Azure, SQL, Excel, PowerPoint and Python",
-              ],
-            },
-            {
-              title: "Student Assistant — HAMK University",
-              dates: "Jan 2021 – Dec 2021",
-              bullets: [
-                "Tutored in Java OOP, Servlets, AJAX",
-                "Planned and led workshops for students.",
-              ],
-            },
-            {
-              title: "Volunteer Group Lead — Slush Helsinki",
-              dates: "Nov 2021",
-              bullets: [
-                "Slush is the largest gathering of startups and investors in the world",
-                "Recruited and Managed  my team of10 volunteers",
-                "Supervised cloakroom operations.",
-              ],
-            },
-          ].map((job) => (
+          {experiences.map((job: any) => (
             <Card key={job.title}>
               <CardHeader
                 title={
@@ -460,7 +484,112 @@ function Experience() {
               />
               <CardContent>
                 <Box component="ul" sx={{ pl: 3, m: 0 }}>
-                  {job.bullets.map((b, i) => (
+                  {job.bullets.map((b: string, i: number) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </Box>
+              </CardContent>
+            </Card>
+          ))}
+        </Box>
+      </Container>
+    </Box>
+  );
+}
+
+function Education() {
+  const { getTranslation, t } = useLanguage();
+  const education = getTranslation("education.items") || [];
+
+  return (
+    <Box
+      id="education"
+      component="section"
+      sx={{ py: { xs: 6, md: 8 }, scrollMarginTop: { xs: "72px", md: "88px" } }}
+    >
+      <Container
+        maxWidth={false}
+        sx={{
+          mx: "auto",
+          px: { xs: 2, sm: 3, md: 4, lg: 6 },
+          maxWidth: "1600px",
+        }}
+      >
+        <Typography variant="h4" gutterBottom>
+          {t("education.title")}
+        </Typography>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          {education.map((edu: any) => (
+            <Card key={edu.degree + edu.school}>
+              <CardHeader
+                title={
+                  <Typography variant="subtitle1">
+                    {edu.degree}{" "}
+                    <Typography
+                      component="span"
+                      color="text.secondary"
+                      sx={{ fontWeight: 400 }}
+                    >
+                      — {edu.school}
+                    </Typography>
+                  </Typography>
+                }
+                subheader={
+                  <Typography color="text.secondary">{edu.dates}</Typography>
+                }
+              />
+              <CardContent>
+                <Box component="ul" sx={{ pl: 3, m: 0 }}>
+                  {edu.bullets.map((b: string, i: number) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </Box>
+              </CardContent>
+            </Card>
+          ))}
+        </Box>
+      </Container>
+    </Box>
+  );
+}
+
+function Volunteering() {
+  const { getTranslation, t } = useLanguage();
+  const volunteering = getTranslation("volunteering.items") || [];
+
+  return (
+    <Box
+      id="volunteering"
+      component="section"
+      sx={{ py: { xs: 6, md: 8 }, scrollMarginTop: { xs: "72px", md: "88px" } }}
+    >
+      <Container
+        maxWidth={false}
+        sx={{
+          mx: "auto",
+          px: { xs: 2, sm: 3, md: 4, lg: 6 },
+          maxWidth: "1600px",
+        }}
+      >
+        <Typography variant="h4" gutterBottom>
+          {t("volunteering.title")}
+        </Typography>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+          {volunteering.map((vol: any) => (
+            <Card key={vol.title}>
+              <CardHeader
+                title={
+                  <Typography variant="subtitle1">
+                    {vol.title}{" "}
+                    <Typography component="span" color="text.secondary">
+                      ({vol.dates})
+                    </Typography>
+                  </Typography>
+                }
+              />
+              <CardContent>
+                <Box component="ul" sx={{ pl: 3, m: 0 }}>
+                  {vol.bullets.map((b: string, i: number) => (
                     <li key={i}>{b}</li>
                   ))}
                 </Box>
@@ -474,6 +603,7 @@ function Experience() {
 }
 
 function Skills() {
+  const { t } = useLanguage();
   return (
     <Box
       id="skills"
@@ -489,7 +619,7 @@ function Skills() {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Skills
+          {t("skills.title")}
         </Typography>
         <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1.5 }}>
           {skills.map((s) => (
@@ -502,6 +632,7 @@ function Skills() {
 }
 
 function Contact() {
+  const { t } = useLanguage();
   const [sending, setSending] = useState(false);
   const [snackOpen, setSnackOpen] = useState(false);
   const [snackMsg, setSnackMsg] = useState("");
@@ -519,7 +650,7 @@ function Contact() {
 
     if (!name || !email || !message) {
       setSnackSeverity("warning");
-      setSnackMsg("Please fill in all fields.");
+      setSnackMsg(t("contact.fillFields"));
       setSnackOpen(true);
       return;
     }
@@ -534,16 +665,16 @@ function Contact() {
       if (res.ok) {
         form.reset();
         setSnackSeverity("success");
-        setSnackMsg("Message sent! I'll get back to you soon.");
+        setSnackMsg(t("contact.success"));
         setSnackOpen(true);
       } else {
         setSnackSeverity("error");
-        setSnackMsg("Couldn't send message. Please try again.");
+        setSnackMsg(t("contact.error"));
         setSnackOpen(true);
       }
     } catch (err) {
       setSnackSeverity("error");
-      setSnackMsg("Network error. Please try again.");
+      setSnackMsg(t("contact.networkError"));
       setSnackOpen(true);
     } finally {
       setSending(false);
@@ -561,7 +692,7 @@ function Contact() {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Contact
+          {t("contact.title")}
         </Typography>
         <Box
           component="form"
@@ -569,17 +700,22 @@ function Contact() {
           sx={{ mt: 4, maxWidth: 720 }}
         >
           <Stack spacing={2}>
-            <TextField name="name" label="Your name" required fullWidth />
+            <TextField
+              name="name"
+              label={t("contact.name")}
+              required
+              fullWidth
+            />
             <TextField
               name="email"
               type="email"
-              label="Email"
+              label={t("contact.email")}
               required
               fullWidth
             />
             <TextField
               name="message"
-              label="Message"
+              label={t("contact.message")}
               required
               fullWidth
               multiline
@@ -591,7 +727,7 @@ function Contact() {
               disabled={sending}
               sx={{ alignSelf: "flex-start" }}
             >
-              {sending ? "Sending…" : "Send Message"}
+              {sending ? t("contact.sending") : t("contact.send")}
             </Button>
           </Stack>
         </Box>
@@ -616,6 +752,7 @@ function Contact() {
 }
 
 function Footer() {
+  const { t } = useLanguage();
   return (
     <Box
       component="footer"
@@ -630,7 +767,7 @@ function Footer() {
         }}
       >
         <Typography variant="body2" color="text.secondary">
-          © {new Date().getFullYear()} {profile.name}. All rights reserved.
+          © {new Date().getFullYear()} {profile.name}. {t("footer.rights")}
         </Typography>
         <Stack direction="row" spacing={1}>
           <IconButton href={profile.social.github} aria-label="GitHub">
@@ -643,6 +780,7 @@ function Footer() {
 }
 
 function Game() {
+  const { t } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [running, setRunning] = useState(false);
   const [paused, setPaused] = useState(false);
@@ -808,11 +946,10 @@ function Game() {
         }}
       >
         <Typography variant="h4" gutterBottom>
-          Game — Snake
+          {t("game.title")}
         </Typography>
         <Typography color="text.secondary" sx={{ mb: 2 }}>
-          Use W, A, S, D to control the snake. Touch the on-screen arrows on
-          mobile.
+          {t("game.instructions")}
         </Typography>
         <Box
           sx={{
@@ -825,20 +962,24 @@ function Game() {
         >
           {!running ? (
             <Button variant="contained" onClick={reset}>
-              Start
+              {t("game.start")}
             </Button>
           ) : (
             <>
               <Button variant="outlined" onClick={() => setPaused((p) => !p)}>
-                {paused ? "Resume" : "Pause"}
+                {paused ? t("game.resume") : t("game.pause")}
               </Button>
               <Button variant="text" onClick={reset}>
-                Restart
+                {t("game.restart")}
               </Button>
             </>
           )}
-          <Typography>Score: {score}</Typography>
-          <Typography color="text.secondary">High: {high}</Typography>
+          <Typography>
+            {t("game.score")}: {score}
+          </Typography>
+          <Typography color="text.secondary">
+            {t("game.high")}: {high}
+          </Typography>
         </Box>
         <Box
           sx={{
@@ -906,33 +1047,45 @@ function Game() {
   );
 }
 
+function PortfolioContent() {
+  return (
+    <>
+      <Header />
+      <Hero />
+      <Projects />
+      <Experience />
+      <Education />
+      <Volunteering />
+      <Skills />
+      <Contact />
+      <Game />
+      <Footer />
+    </>
+  );
+}
+
 export default function Portfolio() {
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <GlobalStyles
-        styles={{
-          html: { scrollBehavior: "smooth" },
-          body: { margin: 0, width: "100%" },
-          "#root": { width: "100%" },
-        }}
-      />
-      <Box
-        sx={{
-          minHeight: "100vh",
-          bgcolor: "background.default",
-          color: "text.primary",
-        }}
-      >
-        <Header />
-        <Hero />
-        <Projects />
-        <Experience />
-        <Skills />
-        <Contact />
-        <Game />
-        <Footer />
-      </Box>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <GlobalStyles
+          styles={{
+            html: { scrollBehavior: "smooth" },
+            body: { margin: 0, width: "100%" },
+            "#root": { width: "100%" },
+          }}
+        />
+        <Box
+          sx={{
+            minHeight: "100vh",
+            bgcolor: "background.default",
+            color: "text.primary",
+          }}
+        >
+          <PortfolioContent />
+        </Box>
+      </ThemeProvider>
+    </LanguageProvider>
   );
 }

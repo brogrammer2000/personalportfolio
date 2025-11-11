@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "projects": "Projektit",
+    "experience": "Kokemus",
+    "education": "Koulutus",
+    "volunteering": "Vapaaehtoistyö",
+    "skills": "Taidot",
+    "contact": "Yhteystiedot",
+    "game": "Peli",
+    "resume": "CV"
+  },
+  "profile": {
+    "role": "Ohjelmistosuunnittelija — Full Stack & Data-analyytti",
+    "tagline": "Rakennan skaalautuvia verkkosovelluksia, KPI-koontinäyttöjä ja tekoälyllisiä projekteja Reactilla ja Pythonilla.",
+    "description": "Keskittyy tällä hetkellä taitojen laajentamiseen OpenAI-sertifikaatteihin, tekoälyprojektien rakentamiseen ja tekoälyn käytön oppimiseen Python-pohjaisissa datatieteen projekteissa.",
+    "basedIn": "Suomessa",
+    "lookingFor": "etsii uusia mahdollisuuksia ohjelmistotekniikan ja datatieteen alalla.",
+    "subsidy": "Olen perillinen Työllisyyslisän kannalta",
+    "viewWork": "Katso työni",
+    "contactMe": "Ota yhteyttä"
+  },
+  "projects": {
+    "title": "Esittelyssä projektit",
+    "items": [
+      {
+        "title": "AI Chatbot — CLI",
+        "description": "Python-komentorivipohjainen chattisovellus, joka integroi OpenAI API:n nopeaan paikalliseen käyttöön."
+      },
+      {
+        "title": "AI Chatbot — React UI",
+        "description": "Verkkopohjainen chattisovellus responsiivisella käyttöliittymällä, rakennettu Reactilla; integroi OpenAI API:n keskusteluihin."
+      },
+      {
+        "title": "EDEKAOffers Scraper",
+        "description": "Supermarkettialennusten keräysohjelma viikoittaisten tarjousten keräämiseen ja tietojen rakenteistamiseen analysointia varten."
+      },
+      {
+        "title": "WeatherApp",
+        "description": "Python-skripti kaupungin sään hakemiseen AccuWeather API:n kautta."
+      },
+      {
+        "title": "PDFDownloader",
+        "description": "PDF-tiedostojen massalataus ja tallennus URL-osoitteista virheenkäsittelyllä."
+      },
+      {
+        "title": "FudHub",
+        "description": "Reseptiehdotussivusto (PHP, HTML, CSS)."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Kokemus",
+    "items": [
+      {
+        "title": "Nuorempi ohjelmistosuunnittelija — Talenom Oy",
+        "dates": "Huhtikuu 2022 – Tammikuu 2025",
+        "bullets": [
+          "Talenom on suomalainen fintech-yritys, joka tarjoaa kirjanpito- ja taloushallintaratkaisuja",
+          "Rakennettu asiakasportaali yli 10 000 asiakkaalle (React, Node.js).",
+          "Kehitetty KYC-työkalu, joka paransi rekrytoinnin tehokkuutta 30%.",
+          "Opinnäytetyö DIY-kirjanpitoautomaatiosta otettiin käyttöön yrityksessä."
+        ]
+      },
+      {
+        "title": "Nuorempi datatieteilijä — Cyreen",
+        "dates": "Tammikuu 2021 – Heinäkuu 2022",
+        "bullets": [
+          "Cyreen on saksalainen startup-yritys, joka tarjoaa digitaalisia markkinointiratkaisuja",
+          "Rakennettu Python-kerääjiä yli 100 supermarkettisivustolle, mikä paransi näkemyksiä 25%.",
+          "Luotu KPI-kyselyitä ja integroitu sää- ja urheilutietoja.",
+          "Työskennellyt PowerBI:n, Tableaun, Azuren, SQL:n, Excelin, PowerPointin ja Pythonin kanssa"
+        ]
+      },
+      {
+        "title": "Opiskeluassistentti — HAMK-yliopisto",
+        "dates": "Tammikuu 2021 – Joulukuu 2021",
+        "bullets": [
+          "Opettanut Java OOP:ta, Servlettejä, AJAXia",
+          "Suunnitellut ja johtanut työpajoja opiskelijoille."
+        ]
+      }
+    ]
+  },
+  "volunteering": {
+    "title": "Vapaaehtoistyö ja osallistuminen",
+    "items": [
+      {
+        "title": "Vapaaehtoisten ryhmänjohtaja — Slush Helsinki",
+        "dates": "Marraskuu 2025",
+        "bullets": [
+          "Vapaaehtoinen Slush Helsingin rakennusryhmässä",
+          "Rekrytoinut ja johtanut 10 vapaaehtoisen tiimiäni",
+          "Autettu tapahtuman järjestämisessä Messukeskus Helsingissä"
+        ]
+      },
+      {
+        "title": "Kehittäjä Junction Hackathonissa",
+        "dates": "14. marraskuuta 2025 - 16. marraskuuta 2025",
+        "bullets": [
+          "Junction 2025 on Euroopan suurin tekoälyhackathon yli 1500 insinöörillä",
+          "Hackathon-haasteet tarjosivat kumppanit kuten Sensofusion, Supercell, Pfizer, Aalto-yliopisto ja WithSecure"
+        ]
+      },
+      {
+        "title": "Vapaaehtoisten ryhmänjohtaja — Slush Helsinki",
+        "dates": "Marraskuu 2021",
+        "bullets": [
+          "Slush on maailman suurin startup-yritysten ja sijoittajien kokous",
+          "Rekrytoinut ja johtanut 10 vapaaehtoisen tiimiäni",
+          "Valvonut vaatesäilytystoimintaa."
+        ]
+      }
+    ]
+  },
+  "education": {
+    "title": "Koulutus",
+    "items": [
+      {
+        "degree": "Tietojenkäsittelyn kandidaatti",
+        "school": "Hämeen ammattikorkeakoulu (HAMK)",
+        "dates": "2019 – 2022",
+        "bullets": [
+          "Valmis opintopisteet aikaisin ottamalla ylimääräisiä kursseja ja projekteja.",
+          "Valmistunut GPA:lla 4.85/5.00.",
+          "Kandidaatintutkielma DIY-kirjanpidosta, joka otettiin käyttöön yrityksessä.",
+          "Työharjoittelu yliopistolla opiskeluassistenttina"
+        ]
+      },
+      {
+        "degree": "Lukion tutkinto",
+        "school": "Delhi Public School, New Delhi",
+        "dates": "2004-2019",
+        "bullets": [
+          "Valmistunut fysiikalla, kemialla ja matematiikalla pääaineina.",
+          "Osallistunut urheiluun: koulun koripallojoukkueen kapteeni.",
+          "Palkittu tutkintomerkinnällä akateemisesta erinomaisuudesta."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Taidot"
+  },
+  "contact": {
+    "title": "Yhteystiedot",
+    "name": "Nimesi",
+    "email": "Sähköposti",
+    "message": "Viesti",
+    "send": "Lähetä viesti",
+    "sending": "Lähetetään…",
+    "fillFields": "Täytä kaikki kentät.",
+    "success": "Viesti lähetetty! Palaan asiaan pian.",
+    "error": "Viestiä ei voitu lähettää. Yritä uudelleen.",
+    "networkError": "Verkkovirhe. Yritä uudelleen."
+  },
+  "game": {
+    "title": "Peli — Käärme",
+    "instructions": "Käytä W, A, S, D näppäimiä käärmen ohjaamiseen. Käytä kosketusnäyttöä mobiilissa.",
+    "start": "Aloita",
+    "pause": "Tauko",
+    "resume": "Jatka",
+    "restart": "Aloita alusta",
+    "score": "Pisteet",
+    "high": "Ennätys"
+  },
+  "footer": {
+    "rights": "Kaikki oikeudet pidätetään."
+  }
+}

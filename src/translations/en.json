@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "projects": "Projects",
+    "experience": "Experience",
+    "education": "Education",
+    "volunteering": "Volunteering",
+    "skills": "Skills",
+    "contact": "Contact",
+    "game": "Game",
+    "resume": "Resume"
+  },
+  "profile": {
+    "role": "Software Engineer — Full Stack & Data Analyst",
+    "tagline": "I build scalable web apps, KPI Dashboards, and AI‑powered projects with React and Python.",
+    "description": "Currently focused on expanding my skillset with doing openAI certifications, building AI-powered projects and learning the use of AI in Python based data science projects.",
+    "basedIn": "Based in Finland",
+    "lookingFor": "looking for new opportunities in the field of software engineering and data science.",
+    "subsidy": "I am eligible for Työllisyyslisä subsidy",
+    "viewWork": "View my work",
+    "contactMe": "Contact me"
+  },
+  "projects": {
+    "title": "Featured Projects",
+    "items": [
+      {
+        "title": "AI Chatbot — CLI",
+        "description": "Python command‑line chatbot integrating OpenAI API for quick local use."
+      },
+      {
+        "title": "AI Chatbot — React UI",
+        "description": "Web‑based chatbot with responsive UI built in React; integrates OpenAI API for conversations."
+      },
+      {
+        "title": "EDEKAOffers Scraper",
+        "description": "Supermarket discount scraper to collect weekly offers and structure data for analysis."
+      },
+      {
+        "title": "WeatherApp",
+        "description": "Python script to fetch city weather via AccuWeather API."
+      },
+      {
+        "title": "PDFDownloader",
+        "description": "Batch download and save PDFs from URLs with error handling."
+      },
+      {
+        "title": "FudHub",
+        "description": "Recipe suggestion website (PHP, HTML, CSS)."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Experience",
+    "items": [
+      {
+        "title": "Junior Software Engineer — Talenom Oy",
+        "dates": "Apr 2022 – Jan 2025",
+        "bullets": [
+          "Talenom is a Finnish Fintech company that provides accounting and financial management solutions",
+          "Built customer portal for 10,000+ clients (React, Node.js).",
+          "Developed KYC tool improving onboarding efficiency by 30%.",
+          "Thesis on DIY accounting automation adopted internally."
+        ]
+      },
+      {
+        "title": "Junior Data Scientist — Cyreen",
+        "dates": "Jan 2021 – Jul 2022",
+        "bullets": [
+          "Cyreen is a German startup that provides digital marketing solutions",
+          "Built Python crawlers for 100+ supermarket sites, boosting insights by 25%.",
+          "Created KPI queries and integrated weather/sports data.",
+          "Worked with PowerBI, Tableau, Azure, SQL, Excel, PowerPoint and Python"
+        ]
+      },
+      {
+        "title": "Student Assistant — HAMK University",
+        "dates": "Jan 2021 – Dec 2021",
+        "bullets": [
+          "Tutored in Java OOP, Servlets, AJAX",
+          "Planned and led workshops for students."
+        ]
+      }
+    ]
+  },
+  "volunteering": {
+    "title": "Volunteering and Participation",
+    "items": [
+      {
+        "title": "Volunteer Group Lead — Slush Helsinki",
+        "dates": "Nov 2025",
+        "bullets": [
+          "Volunteer in Construction team of Slush Helsinki",
+          "Recruited and Managed my team of 10 volunteers",
+          "Helped in setting up the event in Messukeskus Helsinki"
+        ]
+      },
+      {
+        "title": "Developer at Junction Hackathon",
+        "dates": "14 November 2025 - 16 November 2025",
+        "bullets": [
+          "Junction 2025 is the biggest AI hackathon in Europe with +1500 engineers",
+          "Hackathon challenges provided by partners such as Sensofusion, Supercell, Pfizer, Aalto University and WithSecure"
+        ]
+      },
+      {
+        "title": "Volunteer Group Lead — Slush Helsinki",
+        "dates": "Nov 2021",
+        "bullets": [
+          "Slush is the largest gathering of startups and investors in the world",
+          "Recruited and Managed my team of 10 volunteers",
+          "Supervised cloakroom operations."
+        ]
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "degree": "Bachelor in Computer Applications",
+        "school": "Häme University of Applied Sciences (HAMK)",
+        "dates": "2019 – 2022",
+        "bullets": [
+          "Completed my credits early by taking extra courses and projects.",
+          "Graduated with a GPA of 4.85/5.00.",
+          "Bachelor's thesis on DIY accounting which was adopted internally by the company.",
+          "Work placement at the university as a student assistant"
+        ]
+      },
+      {
+        "degree": "High School Diploma",
+        "school": "Delhi Public School, New Delhi",
+        "dates": "2004-2019",
+        "bullets": [
+          "Graduated with Physics, Chemistry, and Mathematics as my main subjects.",
+          "Involved in sports: Captain of the school's basketball team.",
+          "Awarded Scholar's badge for academic excellence."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Your name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending…",
+    "fillFields": "Please fill in all fields.",
+    "success": "Message sent! I'll get back to you soon.",
+    "error": "Couldn't send message. Please try again.",
+    "networkError": "Network error. Please try again."
+  },
+  "game": {
+    "title": "Game — Snake",
+    "instructions": "Use W, A, S, D to control the snake. Touch the on-screen arrows on mobile.",
+    "start": "Start",
+    "pause": "Pause",
+    "resume": "Resume",
+    "restart": "Restart",
+    "score": "Score",
+    "high": "High"
+  },
+  "footer": {
+    "rights": "All rights reserved."
+  }
+}
