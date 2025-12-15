@@ -33,6 +33,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import DownloadIcon from "@mui/icons-material/Download";
 import CodeIcon from "@mui/icons-material/Code";
 import LanguageIcon from "@mui/icons-material/Language";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 
 // ===== Profile data =====
@@ -285,6 +286,16 @@ function Hero() {
             startIcon={<MailIcon />}
           >
             {t("profile.contactMe")}
+          </Button>
+          <Button
+            href={profile.social.linkedin}
+            size="large"
+            variant="outlined"
+            startIcon={<LinkedInIcon />}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t("profile.linkedin")}
           </Button>
         </Stack>
         {/* Right: interactive bubble */}
