@@ -260,7 +260,7 @@ function Hero() {
         <Typography sx={{ mt: 2, maxWidth: 760 }} color="text.secondary">
           <b>{t("profile.basedIn")}</b>, {t("profile.lookingFor")}
         </Typography>
-        <Typography sx={{ mt: 2, maxWidth: 760 }} color="text.secondary">
+        {/* <Typography sx={{ mt: 2, maxWidth: 760 }} color="text.secondary">
           <a
             href="https://hameenlinna.e-lomake.fi/lomakkeet/621/lomake.html"
             target="_blank"
@@ -268,7 +268,7 @@ function Hero() {
           >
             {t("profile.subsidy")}
           </a>
-        </Typography>
+        </Typography> */}
         <Stack direction="row" spacing={2} sx={{ mt: 4, flexWrap: "wrap" }}>
           <Button
             href="#projects"
