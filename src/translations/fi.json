@@ -1,6 +1,7 @@
 {
   "nav": {
     "projects": "Projektit",
+    "appliedAiApps": "Sovellettu tekoäly",
     "experience": "Kokemus",
     "education": "Koulutus",
     "volunteering": "Vapaaehtoistyö",
@@ -8,6 +9,11 @@
     "contact": "Yhteystiedot",
     "game": "Peli",
     "resume": "CV"
+  },
+  "appliedAiApps": {
+    "title": "Sovellettu tekoäly — sovellukset",
+    "subtitle": "Suoratoistodemoja isännöidyistä tekoälysovelluksistani. Kokeile alla tai avaa uuteen välilehteen.",
+    "openDemo": "Avaa demo"
   },
   "profile": {
     "role": "Ohjelmistosuunnittelija — Full Stack & Data-analyytti",

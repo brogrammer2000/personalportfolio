@@ -1,6 +1,7 @@
 {
   "nav": {
     "projects": "Projects",
+    "appliedAiApps": "Applied AI Apps",
     "experience": "Experience",
     "education": "Education",
     "volunteering": "Volunteering",
@@ -8,6 +9,11 @@
     "contact": "Contact",
     "game": "Game",
     "resume": "Resume"
+  },
+  "appliedAiApps": {
+    "title": "Applied AI Apps",
+    "subtitle": "Live demos of my hosted AI-powered web applications. Try them below or open in a new tab.",
+    "openDemo": "Open live demo"
   },
   "profile": {
     "role": "Software Engineer — Full Stack & Data Analyst",
