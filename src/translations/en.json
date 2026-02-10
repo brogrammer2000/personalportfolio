@@ -2,6 +2,7 @@
   "nav": {
     "projects": "Projects",
     "appliedAiApps": "Applied AI Apps",
+    "medium": "Articles Published",
     "experience": "Experience",
     "education": "Education",
     "volunteering": "Volunteering",
@@ -13,7 +14,9 @@
   "appliedAiApps": {
     "title": "Applied AI Apps",
     "subtitle": "Live demos of my hosted AI-powered web applications. Try them below or open in a new tab.",
-    "openDemo": "Open live demo"
+    "openDemo": "Open live demo",
+    "healthcare": "Finnish Healthcare AI Assistant",
+    "research": "AI Research Bot"
   },
   "profile": {
     "role": "Software Engineer — Full Stack & Data Analyst",

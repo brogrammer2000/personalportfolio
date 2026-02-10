@@ -36,6 +36,8 @@ import LanguageIcon from "@mui/icons-material/Language";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { LanguageProvider, useLanguage } from "./contexts/LanguageContext";
 
+import MediumSection from "./components/MediumSection.tsx";
+
 // ===== Profile data =====
 const profile = {
   name: "Satyam Arora",
@@ -85,7 +87,7 @@ const appliedAiApps: {
   tags?: string[];
 }[] = [
   {
-    title: "Finnish AI-Powered Healthcare App",
+    title: "Finnish Healthcare AI Assistant",
     description:
       "Chat about your symptoms and book appointments with healthcare professionals.",
     url: "https://finnish-ai-healthcare-assistant.vercel.app/",
@@ -192,6 +194,9 @@ function Header() {
           </Button>
           <Button href="#applied-ai-apps" color="inherit">
             {t("nav.appliedAiApps")}
+          </Button>
+          <Button href="#medium" color="inherit">
+            {t("nav.medium")}
           </Button>
           <Button href="#experience" color="inherit">
             {t("nav.experience")}
@@ -1224,6 +1229,7 @@ function PortfolioContent() {
       <Hero />
       <Projects />
       <AppliedAIApps />
+      <MediumSection />
       <Experience />
       <Education />
       <Volunteering />
