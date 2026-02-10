@@ -18,8 +18,6 @@ import {
   TextField,
   Snackbar,
   Alert,
-  AlertPropsColorOverrides,
-  AlertColor,
   Menu,
   MenuItem,
 } from "@mui/material";
@@ -28,8 +26,6 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import MailIcon from "@mui/icons-material/Mail";
-import PhoneIcon from "@mui/icons-material/Phone";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import DownloadIcon from "@mui/icons-material/Download";
 import CodeIcon from "@mui/icons-material/Code";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -80,7 +76,7 @@ const skills = [
   "PowerPoint",
 ];
 
-// Applied AI Apps — live demos (add your hosted app URLs here)
+// Applied AI Apps — live demos
 const appliedAiApps: {
   title: string;
   description: string;
@@ -102,8 +98,6 @@ const appliedAiApps: {
       "Railway",
     ],
   },
-  // Add more apps: { title, description, url, tags }
-  //ai-research-bot-react.vercel.app
   {
     title: "AI Research Bot",
     description:
