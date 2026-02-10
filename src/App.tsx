@@ -46,8 +46,9 @@ const profile = {
   phone: "+358 466199543",
   resumeUrl: "/Satyam_Arora_CV_English.pdf",
   social: {
-    github: "https://github.com/yourhandle",
+    github: "https://github.com/Brogrammer2000",
     linkedin: "https://www.linkedin.com/in/satyam-arora-211120/",
+    medium: "https://medium.com/@arorasatyam1112",
   },
 };
 
