@@ -401,14 +401,17 @@ function Projects() {
   const { getTranslation } = useLanguage();
   const projects = getTranslation("projects.items") || [];
   const projectTags: { [key: string]: string[] } = {
+    "Finnish Healthcare AI": ["React", "OpenAI", "Express.js", "PostgreSQL"],
     "AI Chatbot — CLI": ["Python", "OpenAI API", "CLI"],
     "AI Chatbot — React UI": ["React", "OpenAI API", "UX"],
     "EDEKAOffers Scraper": ["Python", "Web Scraping", "Data"],
     WeatherApp: ["Python", "API"],
     PDFDownloader: ["Python", "Automation"],
-    FudHub: ["PHP", "HTML", "CSS"],
+    "EZ Accounting": ["JavaScript", "Craco", "Babel"],
   };
   const projectRepos: { [key: string]: string } = {
+    "Finnish Healthcare AI":
+      "https://github.com/brogrammer2000/Finnish-AI-Healthcare-Assistant",
     "AI Chatbot — CLI": "https://github.com/brogrammer2000/AI_Research_Agent",
     "AI Chatbot — React UI":
       "https://github.com/brogrammer2000/AI_Research_Bot",
@@ -416,7 +419,7 @@ function Projects() {
       "https://github.com/brogrammer2000/Fetching_Offers_EDEKA",
     WeatherApp: "https://github.com/brogrammer2000/WeatherAPI-Py-",
     PDFDownloader: "https://github.com/brogrammer2000/PDF_Downloader",
-    FudHub: "https://github.com/brogrammer2000/fud-hub_2.0",
+    "EZ Accounting": "https://github.com/brogrammer2000/EZ-Accounting",
   };
 
   return (

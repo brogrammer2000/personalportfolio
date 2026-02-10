@@ -33,6 +33,10 @@
     "title": "Featured Projects",
     "items": [
       {
+        "title": "Finnish Healthcare AI",
+        "description": "AI companion where you can describe symptoms to get medical advice and book appointments."
+      },
+      {
         "title": "AI Chatbot — CLI",
         "description": "Python command‑line chatbot integrating OpenAI API for quick local use."
       },
@@ -53,8 +57,8 @@
         "description": "Batch download and save PDFs from URLs with error handling."
       },
       {
-        "title": "FudHub",
-        "description": "Recipe suggestion website (PHP, HTML, CSS)."
+        "title": "EZ Accounting",
+        "description": "Accounting solution built with React to make accounting easy for everyone"
       }
     ]
   },

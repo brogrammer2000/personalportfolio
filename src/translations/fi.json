@@ -31,6 +31,10 @@
     "title": "Esittelyssä projektit",
     "items": [
       {
+        "description": "Tekoälykumppani, jonka avulla voit kuvailla oireita saadaksesi lääkärin neuvoja ja varataksesi aikoja.",
+        "title": "Suomalainen tekoälyn terveydenhuoltosovellus"
+      },
+      {
         "title": "AI Chatbot — CLI",
         "description": "Python-komentorivipohjainen chattisovellus, joka integroi OpenAI API:n nopeaan paikalliseen käyttöön."
       },
