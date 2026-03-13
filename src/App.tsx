@@ -14,11 +14,12 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Game from "./components/Game";
 import Footer from "./components/Footer";
+import { BackgroundBeams } from "./components/ui/background-beams";
 
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
-    primary: { main: "#7c4dff" },
+    primary: { main: "#1e40af", light: "#3b82f6", dark: "#1e3a8a" },
     secondary: { main: "#00e5ff" },
     background: { default: "#0b1220", paper: "#0f172a" },
   },
@@ -34,16 +35,23 @@ function PortfolioContent() {
     <>
       <Header />
       <Hero />
-      <Projects />
-      <AppliedAIApps />
-      <MediumSection />
-      <Experience />
-      <Education />
-      <Volunteering />
-      <Skills />
-      <Contact />
-      <Game />
-      <Footer />
+
+      {/* All sections below Hero share the BackgroundBeams layer */}
+      <Box sx={{ position: "relative", overflow: "hidden" }}>
+        <BackgroundBeams />
+        <Box sx={{ position: "relative", zIndex: 1 }}>
+          <Projects />
+          <AppliedAIApps />
+          <MediumSection />
+          <Experience />
+          <Education />
+          <Volunteering />
+          <Skills />
+          <Contact />
+          <Game />
+          <Footer />
+        </Box>
+      </Box>
     </>
   );
 }

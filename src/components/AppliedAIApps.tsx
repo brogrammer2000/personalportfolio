@@ -124,7 +124,7 @@ export default function AppliedAIApps() {
                   variant="outlined"
                   startIcon={<OpenInNewIcon />}
                   fullWidth
-                  sx={{ mt: 2 }}
+                  sx={{ mt: 2, color: "white" }}
                 >
                   {t("appliedAiApps.openDemo")}
                 </Button>
