@@ -6,10 +6,14 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { profile } from "../data";
 import { PixelTrail } from "@/components/ui/pixel-trail";
 import { useScreenSize } from "@/components/hooks/use-screen-size";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Hero() {
   const { t } = useLanguage();
   const screenSize = useScreenSize();
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 800], [0, 300]);
+  const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
     <Box
@@ -45,7 +49,8 @@ export default function Hero() {
           maxWidth: "1600px",
         }}
       >
-        <Typography variant="overline" color="text.secondary">
+        <motion.div style={{ y, opacity }}>
+          <Typography variant="overline" color="text.secondary">
           {t("profile.role")}
         </Typography>
 
@@ -177,6 +182,7 @@ export default function Hero() {
             />
           </Box>
         </Box>
+        </motion.div>
       </Container>
     </Box>
   );

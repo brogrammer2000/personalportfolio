@@ -12,6 +12,7 @@ import {
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { useLanguage } from "../contexts/LanguageContext";
 import { projectTags, projectRepos } from "../data";
+import { ScrollReveal } from "./ScrollReveal";
 
 export default function Projects() {
   const { getTranslation } = useLanguage();
@@ -42,12 +43,13 @@ export default function Projects() {
             justifyContent: "center",
           }}
         >
-          {projects.map((p: any) => (
+          {projects.map((p: any, i: number) => (
             <Box
               key={p.title}
               sx={{ flex: "1 1 300px", maxWidth: 380, minWidth: 280 }}
             >
-              <Card sx={{ height: "100%" }}>
+              <ScrollReveal direction={i % 2 === 0 ? "left" : "right"} delay={0.1} width="100%">
+                <Card sx={{ height: "100%" }}>
                 <CardHeader
                   titleTypographyProps={{ variant: "h6" }}
                   title={p.title}
@@ -88,6 +90,7 @@ export default function Projects() {
                   </Stack>
                 </CardContent>
               </Card>
+            </ScrollReveal>
             </Box>
           ))}
         </Box>

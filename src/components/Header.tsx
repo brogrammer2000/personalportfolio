@@ -15,11 +15,18 @@ import LanguageIcon from "@mui/icons-material/Language";
 import { Link as MLink } from "@mui/material";
 import { useLanguage } from "../contexts/LanguageContext";
 import { profile } from "../data";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 
 export default function Header() {
   const { t, language, setLanguage } = useLanguage();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const languageButtonRef = useRef<HTMLButtonElement>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -46,15 +53,23 @@ export default function Header() {
   return (
     <AppBar
       position="sticky"
-      color="transparent"
       elevation={0}
       sx={{
-        backdropFilter: "blur(8px)",
+        backgroundColor: isScrolled ? "rgba(15, 23, 42, 0.75)" : "transparent",
+        backdropFilter: isScrolled ? "blur(12px)" : "blur(0px)",
         borderBottom: 1,
-        borderColor: "divider",
+        borderColor: isScrolled ? "rgba(255, 255, 255, 0.08)" : "transparent",
+        transition: "all 0.3s ease",
       }}
     >
-      <Toolbar sx={{ width: "100%", px: { xs: 2, sm: 3, md: 4, lg: 6 } }}>
+      <Toolbar 
+        sx={{ 
+          width: "100%", 
+          px: { xs: 2, sm: 3, md: 4, lg: 6 },
+          py: isScrolled ? 0.5 : 1.5,
+          transition: "padding 0.3s ease"
+        }}
+      >
         <Stack
           direction="row"
           spacing={1}

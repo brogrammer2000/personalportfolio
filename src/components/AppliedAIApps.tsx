@@ -11,11 +11,19 @@ import {
   IconButton,
 } from "@mui/material";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useLanguage } from "../contexts/LanguageContext";
 import { appliedAiApps } from "../data";
+import { useState } from "react";
 
 export default function AppliedAIApps() {
   const { t } = useLanguage();
+  const [loadedApps, setLoadedApps] = useState<Record<string, boolean>>({});
+
+  const handleLoadApp = (url: string) => {
+    setLoadedApps((prev) => ({ ...prev, [url]: true }));
+  };
+
   return (
     <Box
       id="applied-ai-apps"
@@ -102,20 +110,56 @@ export default function AppliedAIApps() {
                     ))}
                   </Stack>
                 )}
-                <Box
-                  component="iframe"
-                  src={app.url}
-                  title={app.title}
-                  sx={{
-                    width: "100%",
-                    height: 360,
-                    border: "none",
-                    borderRadius: 1,
-                    bgcolor: "background.default",
-                    flex: 1,
-                    minHeight: 320,
-                  }}
-                />
+                {loadedApps[app.url] ? (
+                  <Box
+                    component="iframe"
+                    src={app.url}
+                    title={app.title}
+                    sx={{
+                      width: "100%",
+                      height: 360,
+                      border: "none",
+                      borderRadius: 1,
+                      bgcolor: "background.default",
+                      flex: 1,
+                      minHeight: 320,
+                    }}
+                  />
+                ) : (
+                  <Box
+                    sx={{
+                      width: "100%",
+                      height: 360,
+                      borderRadius: 1,
+                      bgcolor: "rgba(15, 23, 42, 0.6)",
+                      border: "1px dashed rgba(255,255,255,0.2)",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: 2,
+                      flex: 1,
+                      minHeight: 320,
+                    }}
+                  >
+                    <IconButton
+                      onClick={() => handleLoadApp(app.url)}
+                      sx={{
+                        width: 64,
+                        height: 64,
+                        bgcolor: "primary.main",
+                        color: "white",
+                        "&:hover": { bgcolor: "primary.dark", transform: "scale(1.05)" },
+                        transition: "all 0.2s"
+                      }}
+                    >
+                      <PlayArrowIcon fontSize="large" />
+                    </IconButton>
+                    <Typography color="text.secondary" variant="body2">
+                      Click to load interactive demo
+                    </Typography>
+                  </Box>
+                )}
                 <Button
                   component="a"
                   href={app.url}
