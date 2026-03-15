@@ -3,7 +3,7 @@ export const profile = {
   location: "Hämeenlinna, Finland",
   email: "arorasatyam1112@gmail.com",
   phone: "+358 466199543",
-  resumeUrl: "/Satyam_Arora_CV_English.pdf",
+  resumeUrl: "/Satyam_Arora_Resume.pdf",
   social: {
     github: "https://github.com/Brogrammer2000",
     linkedin: "https://www.linkedin.com/in/satyam-arora-211120/",
