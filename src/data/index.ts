@@ -37,6 +37,21 @@ export const skills = [
   "Git",
   "Excel",
   "PowerPoint",
+  "Claude API",
+  "Claude Code",
+  "MCP Servers",
+  "OpenAI GPT-4",
+  "Prompt Engineering",
+  "Tailwind CSS",
+  "REST APIs",
+  "Prisma ORM",
+  "Azure SQL",
+  "Azure DevOps",
+  "Jenkins",
+  "JWT Authentication",
+  "RBAC",
+  "bcrypt",
+  "GDPR Awareness",
 ];
 
 export const appliedAiApps: {
