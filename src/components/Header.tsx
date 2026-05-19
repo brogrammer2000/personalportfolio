@@ -110,6 +110,9 @@ export default function Header() {
           <Button href="#skills" color="inherit">
             {t("nav.skills")}
           </Button>
+          <Button href="#certifications" color="inherit">
+            {t("nav.certifications")}
+          </Button>
           <Button href="#contact" color="inherit">
             {t("nav.contact")}
           </Button>

@@ -12,6 +12,7 @@ import Education from "./components/Education";
 import Volunteering from "./components/Volunteering";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import Certifications from "./components/Certifications";
 import Game from "./components/Game";
 import Footer from "./components/Footer";
 import { BackgroundBeams } from "./components/ui/background-beams";
@@ -130,6 +131,10 @@ function PortfolioContent() {
           </ScrollReveal>
 
           <Skills />
+
+          <ScrollReveal direction="up" delay={0.1}>
+            <Certifications />
+          </ScrollReveal>
 
           <ScrollReveal direction="up" delay={0.1}>
             <Contact />

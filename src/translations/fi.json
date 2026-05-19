@@ -7,6 +7,7 @@
     "education": "Koulutus",
     "volunteering": "Vapaaehtoistyö",
     "skills": "Taidot",
+    "certifications": "Sertifikaatit",
     "contact": "Yhteystiedot",
     "game": "Peli",
     "resume": "CV"
@@ -152,6 +153,10 @@
   },
   "skills": {
     "title": "Taidot"
+  },
+  "certifications": {
+    "title": "Viimeisimmät sertifikaatit",
+    "verify": "Vahvista sertifikaatti"
   },
   "contact": {
     "title": "Yhteystiedot",

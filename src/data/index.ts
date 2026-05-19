@@ -92,3 +92,23 @@ export const projectRepos: { [key: string]: string } = {
 };
 
 export const FORMSPREE_URL = "https://formspree.io/f/xzzkajpn";
+
+export const certifications: {
+  name: string;
+  issuer: string;
+  date: string;
+  verifyUrl: string;
+}[] = [
+  {
+    name: "Claude Code in Action",
+    issuer: "Anthropic",
+    date: "March 7, 2026",
+    verifyUrl: "https://verify.skilljar.com/c/783bizimv32p",
+  },
+  {
+    name: "Agentic AI Development",
+    issuer: "Anthropic",
+    date: "March 9, 2026",
+    verifyUrl: "https://verify.skilljar.com/c/nar98rwzdhpo",
+  },
+];
