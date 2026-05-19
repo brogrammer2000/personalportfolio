@@ -23,6 +23,7 @@ Single-page React portfolio app. `src/App.tsx` is the theme/provider wrapper and
 src/
   App.tsx                  # Theme/provider wrapper + section composition only
   data/index.ts            # All shared constants (profile, skills, appliedAiApps, projectTags, projectRepos, FORMSPREE_URL)
+  lib/utils.ts             # cn() helper — clsx + tailwind-merge
   components/              # One file per section
     Header.tsx
     Hero.tsx
@@ -36,12 +37,35 @@ src/
     Contact.tsx
     Game.tsx
     Footer.tsx
+    ScrollReveal.tsx        # Framer Motion scroll-triggered reveal wrapper
+    hooks/
+      use-debounced-dimensions.ts
+      use-screen-size.ts
+    ui/                     # Decorative/visual primitives
+      background-beams.tsx
+      input.tsx
+      pixel-trail.tsx
+      wave-background.tsx
   contexts/
     LanguageContext.tsx
   translations/
     en.json
     fi.json
 ```
+
+### Styling: dual MUI + Tailwind
+
+The project uses **MUI v7** for layout and section components, and **Tailwind CSS v4** for utility classes in decorative `src/components/ui/` components. The `@/` path alias points to `src/`. `src/lib/utils.ts` exports `cn()` (clsx + tailwind-merge) used by `ui/` components. Don't mix the two systems inside a single component — MUI components use `sx` props; `ui/` primitives use Tailwind classes.
+
+### Theme
+
+MUI dark theme defined inline in `App.tsx`: primary `#3b82f6`, secondary `#0ea5e9`, background `#030712` / `rgba(15,23,42,0.4)`, font `Outfit`. Cards have glassmorphism defaults (blur, semi-transparent bg, subtle border).
+
+### Animations
+
+- **`ScrollReveal`** — wraps sections in `PortfolioContent` for `framer-motion` `useInView`-triggered entrance animations. Props: `direction` (`up`/`down`/`left`/`right`/`none`), `delay`, `duration`.
+- **`BackgroundBeams`** — `React.memo` animated SVG placed absolutely behind all sections below Hero. Wrapped in a shared `position:relative overflow:hidden` Box in `PortfolioContent`.
+- A `framer-motion` scroll progress bar is fixed at the top of the page (via `useScroll` + `useSpring`).
 
 ### i18n / Translation system
 
@@ -52,23 +76,19 @@ src/
 
 ### Content data
 
-- **Profile info, skills array, `appliedAiApps` array** — exported from `src/data/index.ts`
+- **Profile info, skills array, `appliedAiApps` array, `FORMSPREE_URL`** — exported from `src/data/index.ts`
 - **Projects, Experience, Education, Volunteering** — data lives in the translation JSON files under their respective keys (e.g., `projects.items[]`). Adding/editing these sections means editing both `en.json` and `fi.json`.
 - Project GitHub links and tech tags are separate lookup objects (`projectRepos`, `projectTags`) in `src/data/index.ts`, keyed by project title
 
 ### External integrations
 
-- **Contact form** — POSTs to Formspree (`FORMSPREE_URL` constant in `App.tsx`)
-- **Medium articles** — fetched via `src/api/medium.js` and rendered by `src/components/MediumSection.tsx`; prefetched articles cached in `src/utils/fetchedMediumArticles.js`
-
-### Theme
-
-MUI dark theme defined inline in `App.tsx`: primary `#7c4dff`, secondary `#00e5ff`, background `#0b1220` / `#0f172a`.
+- **Contact form** — POSTs to Formspree (`FORMSPREE_URL` in `src/data/index.ts`)
+- **Medium articles** — fetched via `src/api/medium.js` and rendered by `MediumSection.tsx`; prefetched articles cached in `src/utils/fetchedMediumArticles.js`
 
 ### Snake Game
 
-Fully self-contained `Game` component in `App.tsx`. Uses a `canvas` element with a `setInterval` game loop. State is tracked via `useRef` (mutable game state) + `useState` (score/UI). Controls: WASD keyboard + mobile D-pad overlay. High score stored in `localStorage` under `snakeHigh`.
+Fully self-contained `Game` component in `src/components/Game.tsx`. Uses a `canvas` element with a `setInterval` game loop. State tracked via `useRef` (mutable game state) + `useState` (score/UI). Controls: WASD + mobile D-pad overlay. High score stored in `localStorage` under `snakeHigh`.
 
 ## File mix: JSX vs TSX
 
-`main.jsx` and `src/api/medium.js`/`src/utils/fetchedMediumArticles.js` are plain JS; `App.tsx`, `MediumSection.tsx`, and `LanguageContext.tsx` are TypeScript. Vite handles both without a separate tsconfig (uses `@vitejs/plugin-react`).
+`main.jsx` and `src/api/medium.js`/`src/utils/fetchedMediumArticles.js` are plain JS; everything else is TypeScript. Vite handles both without a separate tsconfig.
